@@ -290,6 +290,7 @@ int main(void)
 							}
 						}
 
+						cout << "Writing " << dim[1] << "x" << dim[2] << " file " << file_name.c_str() << endl;
 						imwrite(file_name.c_str(), img);
 					}
 				}
