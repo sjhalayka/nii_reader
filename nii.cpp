@@ -268,7 +268,7 @@ int main(void)
 						file_name += oss.str();
 						file_name += ".png";
 
-						cv::Mat img = Mat::zeros(Size(dim[1], dim[2]), CV_8UC3);
+						Mat img = Mat::zeros(Size(dim[1], dim[2]), CV_8UC3);
 					
 						for (int n = 0; n < dim[2]; n++)
 						{
