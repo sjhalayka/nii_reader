@@ -284,9 +284,9 @@ int main(void)
 
 								float f = data[index];
 
-								img.at<Vec3b>(n, o)[0] = static_cast<unsigned char>(f/255.0f);
-								img.at<Vec3b>(n, o)[1] = static_cast<unsigned char>(f/255.0f);
-								img.at<Vec3b>(n, o)[2] = static_cast<unsigned char>(f/255.0f);
+								img.at<Vec3b>(n, o)[0] = static_cast<unsigned char>(f / cal_max*255.0f);
+								img.at<Vec3b>(n, o)[1] = static_cast<unsigned char>(f / cal_max*255.0f);
+								img.at<Vec3b>(n, o)[2] = static_cast<unsigned char>(f / cal_max*255.0f);
 							}
 						}
 
