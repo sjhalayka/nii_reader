@@ -284,9 +284,6 @@ int main(void)
 
 								float f = data[index];
 
-								//if (f > 1)
-								//	cout << "error " << f/255.0f << endl;
-
 								img.at<Vec3b>(n, o)[0] = static_cast<unsigned char>(f/255.0f);
 								img.at<Vec3b>(n, o)[1] = static_cast<unsigned char>(f/255.0f);
 								img.at<Vec3b>(n, o)[2] = static_cast<unsigned char>(f/255.0f);
