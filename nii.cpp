@@ -275,18 +275,18 @@ int main(void)
 							for (int o = 0; o < dim[1]; o++)
 							{
 								size_t index = i*dim[6] * dim[5] * dim[4] * dim[3] * dim[2] * dim[1];
-								index += j*dim[5] * dim[4] * dim[3] * dim[2] * dim[1];
-								index += k*dim[4] * dim[3] * dim[2] * dim[1];
-								index += l*dim[3] * dim[2] * dim[1];
-								index += m*dim[2] * dim[1];
-								index += n*dim[1];
-								index += o;
+								      index += j*dim[5] * dim[4] * dim[3] * dim[2] * dim[1];
+								      index += k*dim[4] * dim[3] * dim[2] * dim[1];
+								      index += l*dim[3] * dim[2] * dim[1];
+								      index += m*dim[2] * dim[1];
+								      index += n*dim[1];
+								      index += o;
 
 								float f = data[index];
 
-								img.at<Vec3b>(n, o)[0] = f*255.0f;
-								img.at<Vec3b>(n, o)[1] = f*255.0f;
-								img.at<Vec3b>(n, o)[2] = f*255.0f;
+								img.at<Vec3b>(n, o)[0] = static_cast<unsigned char>(f*255.0f);
+								img.at<Vec3b>(n, o)[1] = static_cast<unsigned char>(f*255.0f);
+								img.at<Vec3b>(n, o)[2] = static_cast<unsigned char>(f*255.0f);
 							}
 						}
 
