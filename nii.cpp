@@ -1,7 +1,13 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
+#include <string>
+#include <strstream>
 using namespace std;
+
+#include <opencv2/opencv.hpp>
+using namespace cv;
+#pragma comment(lib, "opencv_world331.lib")
 
 int main(void)
 {
@@ -246,6 +252,50 @@ int main(void)
 		return -1;
 	}
 
+	for (int i = 0; i < dim[7]; i++)
+	{
+		for (int j = 0; j < dim[6]; j++)
+		{
+			for (int k = 0; k < dim[5]; k++)
+			{
+				for (int l = 0; l < dim[4]; l++)
+				{
+					for (int m = 0; m < dim[3]; m++)
+					{
+						string file_name = "output_";
+						ostringstream oss;
+						oss << i << "_" << j << "_" << k << "_" << l << "_" << m;
+						file_name += oss.str();
+						file_name += ".png";
+
+						cv::Mat img = Mat::zeros(Size(dim[1], dim[2]), CV_8UC3);
+					
+						for (int n = 0; n < dim[2]; n++)
+						{
+							for (int o = 0; o < dim[1]; o++)
+							{
+								size_t index = i*dim[6] * dim[5] * dim[4] * dim[3] * dim[2] * dim[1];
+								index += j*dim[5] * dim[4] * dim[3] * dim[2] * dim[1];
+								index += k*dim[4] * dim[3] * dim[2] * dim[1];
+								index += l*dim[3] * dim[2] * dim[1];
+								index += m*dim[2] * dim[1];
+								index += n*dim[1];
+								index += o;
+
+								float f = data[index];
+
+								img.at<Vec3b>(n, o)[0] = f*255.0f;
+								img.at<Vec3b>(n, o)[1] = f*255.0f;
+								img.at<Vec3b>(n, o)[2] = f*255.0f;
+							}
+						}
+
+						imwrite(file_name.c_str(), img);
+					}
+				}
+			}
+		}
+	}
 
 	return 0;
 }
